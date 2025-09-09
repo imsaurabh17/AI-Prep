@@ -1,0 +1,24 @@
+## 1. Loops
+
+There are 2 types of loops in python. for and while. It is used to not write the repeated codes which makes the code more modular and saves the developers time.
+
+* for ->  It is used when we already know the number of iterations.
+          Syntax -> for i in range(n):
+                        print(i)
+
+* while -> It is used when we don't know how many times we need to iterate.
+           Syntax -> while loss>0.2:
+                        slope = slope - lr * (dy/dx)
+
+
+** Between for and while loops, for loop is faster because it uses iterator protocol internally which is optimised in C. Whereas while loop check the condition in each iteration and relies more on python level logic hencce making it slower than for loop.
+
+
+## 2. Conditional
+
+* It is used to check the conditions and only execute that line of code which satisfies the condition. It helps us to make decisions.
+
+
+## 3. Comprehension
+
+** Comprehensions are a shortcut to create a list/set/dict in a single line which makes the code more readable, cleaner and faster.
