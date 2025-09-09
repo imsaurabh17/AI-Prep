@@ -1,0 +1,58 @@
+## day_1 topics leaned
+
+** 1. Lists
+
+Lists are mutable, ordered collection data structure which can hold heterogenous data types such as int,string, dict, lists, tuple etc.
+
+* Imp lists methods
+
+append(x)    ->    adds the element x at the end    ->   list.append(x)
+extend([x,y]) ->   adds multiple elements at the end ->  list.extend([x,y])
+pop(x)        ->   removes the item at the xth index or the last item  -> list.pop([2])
+remove(x)     ->   removes the first occurence of x  ->  list.remove(x)
+insert(i,x)   ->   inserts the element x at the ith index ->  list.insert(i,x)
+clear()       ->   removes all the element from the list  -> list.remove()
+index(x)      ->   provides the index of the element x   ->  list.index(x)
+reverse()     ->   reverses the list                     ->  list.reverse()
+sort()        ->   sorts the list in the ascending order  -> list.sort()
+count(x)      ->   counts the number of occurence of x    -> list.count(x)
+copy()        ->   returns the shallow copy               -> list.copy()
+
+
+** 2. tuple
+
+Tuple is an immutable, ordered collection data structure which can hold heterogenous data types.
+
+* Imp tuple methods
+
+count(x)    -> counts the number of occurence of x   ->  tuple.count(x)
+index(x)    -> provides the index of the element x   ->  tuple.index(x)
+
+
+
+** 3. sets
+
+Set is a unordered and mutable data structure and it is a mutable collection of unique and hashable elements.
+
+* Imp methods of Set
+
+add(x)     ->  adds the element x     ->  set.add(x)
+update([x,y]) -> adds multiple elements -> set.update([x,y])
+remove(x)    ->  removes the element x, error if not found   ->  set.remove(x)
+discard(x)   -> removes x, no error if not found    ->   set.discard(x)
+pop()    -> removes the random element     ->    set.pop()
+clear()   -> removes all the element    ->   set.clear()
+union()   ->  provides the union of the 2 sets -> s1.union(s2)
+intersection()  -> provides the intersection   -> s1.intersection(s2)
+difference()   -> element in one but not in other  ->  s1.difference(s2)
+issubset()   -> checks if the other set is a subset of first set  -> s1.subset(s2)
+
+** 4. dict
+
+Dict is a key->value paired hashable data structure in python. It is ordered based on the key. It's key must be immutable. Dict is a mutable data type.
+
+key()    ->   Returns the keys of a dict      ->     d.keys()
+values() ->   Returns the values of a dict    ->     d.values()
+items()  ->   Returns the items of a dict     ->     d.items()
+get(key,default) -> Returns value of a key or default if not found -> d.get(key,0)
+update(other_dict)  ->  Updates the dict with the other dict    -> d1.update(d2)
