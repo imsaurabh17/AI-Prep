@@ -1,3 +1,5 @@
+# 1. write a class of BankAccount with deposit and withdraw methods.
+
 class BankAccount:
 
     def __init__(self,accountnumber:int,balance:int):
