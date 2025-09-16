@@ -40,9 +40,7 @@ class ExpenseTracker:
 
     def update_expense(self,date,item,updates,output_file='tracker.csv'):
         df = pd.read_csv("tracker.csv")
-        #date,item = map(str,input("Enter the date in dd/mm/yyyy and the item name:  ").split())
         mask = (df['Date']==date)&(df['item']==item)
-        #updates = ast.literal_eval(input("Provide the column name and updated values in the key-value pair: "))
         if not mask.any():
             print("No match found")
             return
@@ -60,8 +58,14 @@ class ExpenseTracker:
             df.to_csv(output_file,index=False)
             print(f"Created {output_file}")
         
+    def delete_expense(self,date,item,output_file='tracker.csv'):
+        df = pd.read_csv("tracker.csv")
+        mask = (df['Date']==date)&(df['item']==item)
+        if not mask.any():
+            print("No matches found")
+            return
+        
+        df.drop(df[mask].index,inplace=True)
 
-
-
-#expense = ExpenseTracker()
-#expense.update_expense()
+        df.to_csv(output_file,index=False)
+        

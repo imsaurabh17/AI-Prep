@@ -19,6 +19,10 @@ class update_value(BaseModel):
     item : str
     updates : str
 
+class delete_value(BaseModel):
+    date : str
+    item : str
+
 app = FastAPI()
 
 @app.post('/add_expense',response_model = Expense)
@@ -41,3 +45,8 @@ def get_specific(dates:Date):
 def update_values(date,item,updates):
     my_expense.update_expense(date,item,updates)
     return {"date":date,"item":item,"updates":updates}
+
+@app.delete('/delete',response_model=delete_value)
+def delete_value(date,item):
+    my_expense.delete_expense(date,item)
+    return {'date':date,'item':item}
