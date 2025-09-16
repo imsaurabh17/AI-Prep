@@ -14,6 +14,11 @@ class Date(BaseModel):
     start_date : str
     end_date : str
 
+class update_value(BaseModel):
+    date : str
+    item : str
+    updates : str
+
 app = FastAPI()
 
 @app.post('/add_expense',response_model = Expense)
@@ -32,3 +37,7 @@ def get_specific(dates:Date):
     df = my_expense.view_specific_expense(dates.start_date,dates.end_date)
     return df.to_dict(orient="records")
     
+@app.put('/update',response_model=update_value)
+def update_values(date,item,updates):
+    my_expense.update_expense(date,item,updates)
+    return {"date":date,"item":item,"updates":updates}

@@ -5,6 +5,7 @@
 import os
 import csv
 import pandas as pd
+import ast
 
 if not os.path.exists("tracker.csv"):
     with open("tracker.csv","w",newline="") as f:
@@ -37,6 +38,30 @@ class ExpenseTracker:
         df = df[(df['Date']>=start_date) & (df['Date']<=end_date)]
         return df
 
+    def update_expense(self,date,item,updates,output_file='tracker.csv'):
+        df = pd.read_csv("tracker.csv")
+        #date,item = map(str,input("Enter the date in dd/mm/yyyy and the item name:  ").split())
+        mask = (df['Date']==date)&(df['item']==item)
+        #updates = ast.literal_eval(input("Provide the column name and updated values in the key-value pair: "))
+        if not mask.any():
+            print("No match found")
+            return
+        for col,new_val in ast.literal_eval(updates).items():
+            if col in df.columns:
+                df.loc[mask,col] = new_val
+                df.loc[mask,'amount'] = df.loc[mask,'quantity']*df.loc[mask,'unit price']
+            else:
+                print(f"{col} not in csv file")
 
-# expense = ExpenseTracker()
-# expense.view_specific_expense()
+        if output_file:
+            df.to_csv(output_file,index=False)
+            print(f"Updated {output_file}")
+        else:
+            df.to_csv(output_file,index=False)
+            print(f"Created {output_file}")
+        
+
+
+
+#expense = ExpenseTracker()
+#expense.update_expense()
