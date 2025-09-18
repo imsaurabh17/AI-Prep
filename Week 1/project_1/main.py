@@ -26,7 +26,7 @@ class delete_value(BaseModel):
 app = FastAPI()
 
 @app.post('/add_expense',response_model = Expense)
-def add_expense(date:str=Form(...),item:str=Form(...),quantity:int=Form(...),unit_price:int=Form(...)):
+def add_expense(date:str,item:str,quantity:int,unit_price:int):
     amount = quantity * unit_price
     my_expense.add_expense(date,item,quantity,unit_price,amount)
     return Expense(date=date,item=item,quantity=quantity,unit_price=unit_price)
@@ -42,9 +42,9 @@ def get_specific(dates:Date):
     return df.to_dict(orient="records")
     
 @app.put('/update',response_model=update_value)
-def update_values(date,item,updates):
-    my_expense.update_expense(date,item,updates)
-    return {"date":date,"item":item,"updates":updates}
+def update_values(values:update_value):
+    my_expense.update_expense(values.date,values.item,values.updates)
+    return values
 
 @app.delete('/delete',response_model=delete_value)
 def delete_value(date,item):
